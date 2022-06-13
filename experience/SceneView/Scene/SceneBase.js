@@ -3,6 +3,7 @@ import {
     BoxGeometry,
     Color,
     GridHelper,
+    HemisphereLight,
     Mesh,
     MeshBasicMaterial,
     PerspectiveCamera,
@@ -49,11 +50,11 @@ export default class SceneBase {
 
     setScene () {
         this.scene = new Scene();
-        this.scene.background = new Color(0x000000);
+        this.scene.background = new Color(0x000033);
     }
 
     setLights () {
-        this.ambientLight = new AmbientLight(0x808080);
+        this.ambientLight = new AmbientLight(0xBBBBBB);
         this.scene.add(this.ambientLight);
     }
 
