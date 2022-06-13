@@ -49,9 +49,8 @@ export default class SceneView extends SceneBase {
         const loader = new GLTFLoader();
 
         loader.load('/assets/models/spinning-top.gltf', (gltf) => {
-            console.log(gltf.scene);
             this.scene.add(gltf.scene);
-        })
+        });
     }
 
     addTestSphere () {
