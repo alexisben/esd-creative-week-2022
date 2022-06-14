@@ -4,30 +4,31 @@ import {
     Object3D, 
     SphereGeometry} from "three";
 
-export default class Planet {
-    constructor({ distance, speed, size = 1, color = 0xFFFFFF }) {
-        this.parameters = { 
-            distance: distance, 
-            speed: speed,
-            size: size,
-            color: color
-        };
-
-        this.init();
-    }
-    init () {
+const SPEED_FACTOR = 0.01;
+export default class Planet extends Mesh {
+    constructor({ distance, speed, radius = 1, color = 0xFFFFFF }) {
         let geometry, material;
-        this.object = new Object3D();
-
-        geometry = new SphereGeometry(this.parameters.size, 32, 32);
+        geometry = new SphereGeometry(radius, 32, 32);
         material = new MeshBasicMaterial({
-            color: this.parameters.color
+            color: color,
+            wireframe: true
         });
-        this.sphere = new Mesh(geometry, material);
-        this.sphere.position.x = this.parameters.distance;
-        this.object.add(this.sphere);
+
+        super(geometry, material);
+
+        this.tick = 0;
+        this._speed = speed;
+        this.distance = distance;
     }
+
+    _getSpeed() {
+        return this._speed * SPEED_FACTOR;
+    }
+
     update () {
-        this.object.rotation.y += this.parameters.speed;
+        this.tick += 1;
+        this.rotation.y += this._getSpeed();
+        this.position.z = Math.sin(this.tick * this._getSpeed() ) * this.distance;
+        this.position.x = Math.cos(this.tick * this._getSpeed() ) * this.distance;
     }
 }
