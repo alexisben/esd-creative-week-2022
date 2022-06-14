@@ -1,17 +1,20 @@
 import { 
     Mesh,
     MeshBasicMaterial,
-    Object3D, 
+    Object3D,
+    TextureLoader,
     SphereGeometry} from "three";
 
 const SPEED_FACTOR = 0.01;
 export default class Planet extends Mesh {
     constructor({ distance, speed, radius = 1, color = 0xFFFFFF }) {
-        let geometry, material;
+        let geometry, material, texture;
+        // load a texture, set wrap mode to repeat
+        texture = new TextureLoader().load( "assets/images/textures/test.jpeg" );
         geometry = new SphereGeometry(radius, 32, 32);
         material = new MeshBasicMaterial({
             color: color,
-            wireframe: true
+            map: texture
         });
 
         super(geometry, material);
