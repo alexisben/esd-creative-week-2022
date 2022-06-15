@@ -1,14 +1,14 @@
 import { Object3D, BufferGeometry, Float32BufferAttribute, PointsMaterial, Points } from "three";
 
-const DEFAULT_SPEED = 0.0004;
+const DEFAULT_SPEED = 0.004;
 
 export default class Stars extends Object3D {
     constructor () {
         super();
 
         const vertices = [],
-            distance = 200,
-            quantity = 300,
+            distance = 50,
+            quantity = 100,
             geometry = new BufferGeometry();
 
         let material;

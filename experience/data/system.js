@@ -9,9 +9,9 @@ export default {
           },
           {
             name: 'Mercury',
-            distance: 83,
-            speed: 0.1,
-            radius: 0.004,
+            distance: 10,
+            speed: 1,
+            radius: 0.5,
             color: 0xb1adad,
           },
           {
