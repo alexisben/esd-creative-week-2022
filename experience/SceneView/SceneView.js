@@ -3,6 +3,7 @@ import SceneBase from './Scene/SceneBase';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import Tree from '../elements/Tree';
 import Planet from '../elements/Planet';
+import Spheres from '../elements/Spheres';
 import system from '../data/system';
 import Stars from '../elements/Stars';
 import CameraCurve from '../elements/CameraCurve';
@@ -39,7 +40,9 @@ export default class SceneView extends SceneBase {
 
         this.isReady = true;
 
-        
+        // SPHERES
+
+        this.spheres = new Spheres(this);
     }
 
     addStars () {
