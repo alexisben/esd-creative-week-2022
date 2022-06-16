@@ -7,7 +7,8 @@ import Spheres from '../elements/Spheres';
 import system from '../data/system';
 import Stars from '../elements/Stars';
 import CameraCurve from '../elements/CameraCurve';
-
+import CameraManager from '../camera/CameraManager';
+import pointer from "../pointer/Pointer";
 export default class SceneView extends SceneBase {
     init () {
         super.init();
@@ -38,11 +39,14 @@ export default class SceneView extends SceneBase {
         // FOG
         // this.scene.fog = new Fog( 0xefd1b5, 40, 50 );
 
-        this.isReady = true;
-
+        
         // SPHERES
-
         this.spheres = new Spheres(this);
+        
+        // CAMERA MANAGER
+        this.cameraManager = new CameraManager(this);
+
+        this.isReady = true;
     }
 
     addStars () {
@@ -62,6 +66,8 @@ export default class SceneView extends SceneBase {
             this.cameraCurve.update();
             // this.camera.lookAt(this.planets.children[0].position);
             // this.camera.position.copy(this.planets.children[1].position);
+
+            this.cameraManager.update();
         }
     }
 }
